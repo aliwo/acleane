@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## 실행문
+json & serialization build / flutter pub run build_runner build
+json & serialization watch mode / flutter pub run build_runner watch --delete-conflicting-outputs
+apk build for release / flutter build apk
+apk build / flutter build apk --split-per-abi
