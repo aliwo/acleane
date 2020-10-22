@@ -9,6 +9,7 @@ void main() {
   // bloc repositories
   final authRepository = AuthRepository();
   final userRepository = UserRepository();
+  print('repository instantiated');
 
   // blocs
   final authenticationBloc = AuthenticationBloc(
