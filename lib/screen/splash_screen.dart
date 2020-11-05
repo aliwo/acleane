@@ -19,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     BlocProvider.of<AuthenticationBloc>(context).add(AppStarted());
   }
 
+  kejf
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
