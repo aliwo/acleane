@@ -24,6 +24,7 @@ class MainApi {
 
 class APIError extends Error {
   final errorMsg;
+
   APIError(this.errorMsg);
 
   @override

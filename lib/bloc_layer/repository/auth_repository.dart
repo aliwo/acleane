@@ -25,8 +25,7 @@ class AuthRepository {
     try {
       final googleUser = await googleSignIn.signIn();
       final auth = await googleUser.authentication;
-      final response =
-          await authProvider.postOauthGoogle(accessToken: auth.accessToken);
+      final response = await authProvider.postOauthGoogle(accessToken: auth.accessToken);
       final body = json.decode(response.body);
       if (response.statusCode != 200) {
         throw Exception('No OAuth { body: ${body} }');

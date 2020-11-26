@@ -3,6 +3,7 @@ part of 'authentication_bloc.dart';
 @immutable
 abstract class AuthenticationState extends Equatable {
   const AuthenticationState();
+
   void onRoute(context) {}
 
   @override
