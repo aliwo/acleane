@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:acleane/bloc_layer/bloc/sign_in/sign_in_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key key}) : super(key: key);
@@ -27,8 +28,8 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           BlocProvider(
               create: (BuildContext context) => SignInBloc(
-                    authenticationBloc: null,
-                    authRepository: null,
+                    authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+                    authRepository: BlocProvider.of<AuthenticationBloc>(context).authRepository,
                   ),
               child: GoogleLoginButton()),
           Text("개인정보 처리방침"),
