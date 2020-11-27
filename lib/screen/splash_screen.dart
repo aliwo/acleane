@@ -3,6 +3,8 @@ import 'package:acleane/screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
 
@@ -23,17 +25,61 @@ class _SplashScreenState extends State<SplashScreen> {
       listener: (context, state) async {
         await Future.delayed(Duration(seconds: 2));
         await Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => SignInScreen()),
-            (route) => false);
+            MaterialPageRoute(builder: (context) => SignInScreen()), (route) => false);
       },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('스플래쉬'),
-        ),
-        body: Center(
-          child: Text('스플래쉬'),
-        ),
-      ),
+      child: Splash(),
     );
+  }
+}
+
+class Splash extends StatelessWidget {
+  Splash({
+    Key key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: const Color(0xffffffff),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: Container()),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'images/svg/logo.svg',
+                    width: 174,
+                    height: 188,
+                  ),
+                  Text(
+                    '곰 보 일 기',
+                    style: TextStyle(fontSize: 42, fontFamily: 'BM JUA_TTF'),
+                  ),
+                  Text(
+                    '여드름으로 고민하는 당신을 위해',
+                    style: TextStyle(fontSize: 14, fontFamily: 'NanumSquare_ac'),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(),
+            ),
+            Container(
+              alignment: Alignment.center,
+              width: 322,
+              padding: EdgeInsets.all(10.0),
+              child: Text(
+                'v1.0',
+                style: TextStyle(fontSize: 12, fontFamily: 'NanumSquare_ac'),
+              ),
+              decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.black))),
+            ),
+          ],
+        ));
   }
 }
