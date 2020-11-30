@@ -39,6 +39,8 @@ dependencies:
     adobe_xd: ^1.0.0+1
     #svg
     flutter_svg: ^0.18.1
+    #custom_radio_grouped_button
+    custom_radio_grouped_button: ^1.0.6+1
 
 dev_dependencies:
     flutter_test:
