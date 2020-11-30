@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:acleane/bloc_layer/model/user.dart';
 import 'package:acleane/bloc_layer/repository/auth_repository.dart';
+import 'package:acleane/screen/sign_in_screen.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -11,8 +12,7 @@ import 'package:flutter/material.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthRepository authRepository;
 
   @override
