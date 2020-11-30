@@ -14,6 +14,18 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) async {
+        await state.onRoute(context);
+      },
+      child: _SignInScreen(),
+    );
+  }
+}
+
+class _SignInScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

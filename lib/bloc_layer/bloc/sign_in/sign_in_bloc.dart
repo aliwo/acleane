@@ -31,7 +31,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         yield SignInLoading();
         if (event is GoogleSignInPressed) {
           var token = await authRepository.googleSignIn();
-          //authenticationBloc.add(SignedIn(token: token));
+          authenticationBloc.add(SignedIn(token: token));
         }
         yield SignInInitial();
       } catch (error) {

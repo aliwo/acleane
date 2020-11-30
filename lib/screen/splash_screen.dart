@@ -24,8 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) async {
         await Future.delayed(Duration(seconds: 2));
-        await Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => SignInScreen()), (route) => false);
+        await state.onRoute(context);
       },
       child: Splash(),
     );

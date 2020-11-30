@@ -44,7 +44,8 @@ class AuthenticationAuthenticated extends AuthenticationState {
 class AuthenticationUnauthenticated extends AuthenticationState {
   @override
   void onRoute(context) async {
-    // 라우팅
+    await Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => SignInScreen()), (route) => false); // 라우팅
   }
 }
 
