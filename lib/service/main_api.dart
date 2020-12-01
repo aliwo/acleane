@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:acleane/service/token_service.dart';
 
 class MainApi {
-  static final baseUrl = 'http://service.soyeonlab.com';
+  static final baseUrl = 'http://52.79.200.252:8000';
 
   Future get onlyTokenHeader async => {
         'Authorization': 'Bearer ${json.decode(await TokenService.getToken())}',

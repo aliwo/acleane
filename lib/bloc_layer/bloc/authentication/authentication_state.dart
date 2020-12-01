@@ -24,6 +24,8 @@ class AuthenticationUninitialized extends AuthenticationState {
 class AuthenticationHasToken extends AuthenticationState {
   @override
   void onRoute(context) async {
+    User user = await UserRepository().getMyProfile();
+    BlocProvider.of<AuthenticationBloc>(context).add(CheckSignUp(user: user));
     // 라우팅
   }
 }
