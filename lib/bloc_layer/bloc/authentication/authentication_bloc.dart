@@ -40,7 +40,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     if (event is CheckSignUp) {
       try {
         // TODO;
-        if (event.user.id == 1) {
+        // if (event.user.id == 1) {
+        if (false) {
           //// 회원가입이 필요없다면
           yield AuthenticationAuthenticated();
         } else {

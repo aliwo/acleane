@@ -45,3 +45,4 @@ app.*.map.json
 # ETC
 .VSCodeCounter
 key.properties
+*.lock
