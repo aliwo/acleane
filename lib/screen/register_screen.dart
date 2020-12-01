@@ -1,8 +1,10 @@
 import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
+import 'package:acleane/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 enum Gender { MAN, WOMEN }
 
@@ -27,17 +29,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 class _RegisterScreenScaffold extends StatefulWidget {
   _RegisterScreenScaffold({Key key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _RegisterScreenScaffoldState();
 }
 
 class _RegisterScreenScaffoldState extends State<_RegisterScreenScaffold> {
-  Gender _gender = Gender.MAN;
+  Gender _gender;
   int _age = 20;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
+        centerTitle: true,
         shadowColor: Colors.white,
         backgroundColor: Colors.white,
         leading: FlatButton(
@@ -56,9 +62,7 @@ class _RegisterScreenScaffoldState extends State<_RegisterScreenScaffold> {
           children: ListTile.divideTiles(
                 context: context,
                 tiles: [
-                  ListTile(
-                    title: Text('사전 정보와 피부고민을 입력해주세요'),
-                  ),
+                  ListTile(title: InstructionBalloon('사전 정보와 피부고민을 입력해주세요')),
                   ListTile(
                     leading: Text('이름'),
                     title: Row(
@@ -106,32 +110,37 @@ class _RegisterScreenScaffoldState extends State<_RegisterScreenScaffold> {
                     leading: Text('피부고민'),
                     title: CustomCheckBoxGroup(
                       buttonTextStyle: ButtonTextStyle(
-                          unSelectedColor: Colors.grey, selectedColor: Colors.deepOrange),
+                          unSelectedColor: Colors.grey,
+                          selectedColor: Colors.deepOrange,
+                          textStyle: TextStyle(fontSize: 12)),
                       unSelectedColor: Colors.white,
                       selectedColor: Colors.white,
                       unSelectedBorderColor: Colors.grey,
                       selectedBorderColor: Colors.deepOrange,
                       enableShape: true,
                       enableButtonWrap: true,
-                      width: 73,
-                      height: 27,
-                      buttonLables: ['a', 'b', 'c', 'd', 'e'],
-                      buttonValuesList: [1, 2, 3, 4, 5],
+                      spacing: 10,
+                      width: 109,
+                      // height: 27,
+                      buttonLables: [
+                        '지복합성 피부',
+                        '지성 피부',
+                        '여드름 피부',
+                        '여드름 자국',
+                        '건성 피부',
+                        '민감성 피부',
+                        '아토피 피부'
+                      ],
+                      buttonValuesList: [1, 2, 3, 4, 5, 6, 7],
                     ),
                   ),
                 ],
               ).toList() +
               [
                 Spacer(flex: 1435),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * (316 / 360),
-                  height: MediaQuery.of(context).size.height * (40 / 640),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(23)))),
-                      onPressed: null,
-                      child: Text('입력 완료하기')),
+                OKButton(
+                  child: Text('입력 완료하기'),
+                  onPressed: null,
                 ),
                 Spacer(flex: 620),
               ]),
