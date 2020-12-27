@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<JournalBloc, JournalState>(
+    return BlocListener<JournalBloc, RoutineStateJournalState>(
       child: Home(),
     );
   }
