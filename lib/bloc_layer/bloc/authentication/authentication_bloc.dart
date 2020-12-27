@@ -29,27 +29,17 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     AuthenticationEvent event,
   ) async* {
     if (event is AppStarted) {
-      final token = await authRepository.getToken();
-      print('token { ${token} }');
-      if (token != null) {
-        yield AuthenticationHasToken();
-      } else {
-        yield AuthenticationUnauthenticated();
-      }
+      yield await event.process(authRepository);
     }
     if (event is CheckSignUp) {
-      try {
-        // TODO;
-        // if (event.user.id == 1) {
-        if (false) {
-          //// 회원가입이 필요없다면
-          yield AuthenticationAuthenticated();
-        } else {
-          //// 회원가입이 필요하다면
-          yield AuthenticationUnsignedUp();
-        }
-      } catch (e) {
-        print(e.toString());
+      // TODO;
+      if (event.user.id == 1) {
+      // if (false) {
+        //// 회원가입이 필요없다면
+        yield AuthenticationAuthenticated();
+      } else {
+        //// 회원가입이 필요하다면
+        yield AuthenticationUnsignedUp();
       }
     }
     if (event is SignedIn) {

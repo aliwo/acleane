@@ -6,14 +6,32 @@ abstract class AuthenticationEvent extends Equatable {
 
   @override
   List<Object> get props => [];
+
+  Future<AuthenticationState> process(authRepository) async {
+    return null;
+  }
+
 }
 
-class AppStarted extends AuthenticationEvent {}
+class AppStarted extends AuthenticationEvent {
+
+  @override
+  Future<AuthenticationState> process(authRepository) async {
+    final token = await authRepository.getToken();
+    print('token { ${token} }');
+    if (token != null) {
+      return AuthenticationHasToken();
+    } else {
+      return AuthenticationUnauthenticated();
+    }
+  }
+}
 
 class CheckSignUp extends AuthenticationEvent {
   final User user;
 
   CheckSignUp({@required this.user});
+
 }
 
 class SignedIn extends AuthenticationEvent {
