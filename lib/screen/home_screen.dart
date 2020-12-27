@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SplashScreen extends StatefulWidget {
-  SplashScreen({Key key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
@@ -20,21 +19,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<JournalBloc, JournalState>(
-      listener: (context, state) async {
-        await Future.delayed(Duration(seconds: 2));
-        await state.onRoute(context);
-      },
-      child: Splash(),
+      child: Home(),
     );
   }
 }
 
-class Splash extends StatelessWidget {
-  Splash({
+class Home extends StatelessWidget {
+  Home({
     Key key,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    // 메인이 아닌 screen 도 Scaffold 를 가져?
     return Scaffold();
   }
 }

@@ -5,11 +5,11 @@ import 'dart:convert';
 class AuthProvider {
   final client = Client();
 
-  Future<dynamic> postOauthNaver({accessToken}) async {
-    return await client.post(
-      MainApi.baseUrl + '/oauth/naver',
-      headers: {'content-type': 'application/json'},
-      body: json.encode({'token': accessToken}),
+  Future<dynamic> getAllRoutines() async {
+    // 모든 routines 목록을 조회합니다.
+    return await client.get(
+      MainApi.baseUrl + '/routines',
+      headers: {'content-type': 'application/json'}
     );
   }
 
