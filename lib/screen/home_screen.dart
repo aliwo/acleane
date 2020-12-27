@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthenticationBloc, AuthenticationState>(
+    return BlocListener<JournalBloc, JournalState>(
       listener: (context, state) async {
         await Future.delayed(Duration(seconds: 2));
         await state.onRoute(context);
