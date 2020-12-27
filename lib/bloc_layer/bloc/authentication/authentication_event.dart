@@ -34,8 +34,7 @@ class CheckSignUp extends AuthenticationEvent {
 
   @override
   Future<AuthenticationState> process(authRepository) async {
-    if (user.id == 1) {
-      // if (false) {
+    if (user.registered) {
       //// 회원가입이 필요없다면
       return AuthenticationAuthenticated();
     } else {

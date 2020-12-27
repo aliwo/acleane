@@ -9,8 +9,12 @@ part 'user.g.dart';
 @JsonSerializable()
 class User {
   int id;
+  int age;
+  String name;
+  String gender; // 이거 enum 같은거로 할 수 없나?
+  bool registered;
 
-  User({this.id});
+  User({this.id, this.age, this.name, this.gender, this.registered});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];

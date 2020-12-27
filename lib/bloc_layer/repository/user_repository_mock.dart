@@ -8,16 +8,16 @@ class UserRepositoryMock extends UserRepository{
 
   @override
   Future<dynamic> getMyProfile() async {
-    return User();
+    return User(id: 1, name: 'mock', gender: 'm', registered: true);
   }
 
   @override
   Future<dynamic> putMyProfile({Map<String, dynamic> properties}) async {
-    return User();
+    return User(id: 1, name: 'mock', gender: 'm', registered: true);
   }
 
   @override
   Future<dynamic> getProfile({userId}) async {
-    return User();
+    return User(id: 1, name: 'mock', gender: 'm', registered: true);
   }
 }
