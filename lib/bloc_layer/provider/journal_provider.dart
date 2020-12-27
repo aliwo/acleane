@@ -5,7 +5,7 @@ import 'dart:convert';
 class JournalProvider {
   final client = Client();
 
-  Future<dynamic> getAllJournalInMonth(date) async {
+  Future<dynamic> getAllJournalsInMonth(date) async {
     // 특정 month 안 의 모든 journal 목록을 조회합니다.
     return await client.get(
         Uri.http(MainApi.baseUrl, '/journals', {'year': date.year, 'month': date.month}),
