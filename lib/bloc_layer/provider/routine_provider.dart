@@ -1,8 +1,7 @@
 import 'package:acleane/service/main_api.dart';
 import 'package:http/http.dart';
-import 'dart:convert';
 
-class AuthProvider {
+class RoutineProvider {
   final client = Client();
 
   Future<dynamic> getAllRoutines() async {
@@ -13,19 +12,11 @@ class AuthProvider {
     );
   }
 
-  Future<dynamic> postOauthKakao({accessToken}) async {
-    return await client.post(
-      MainApi.baseUrl + '/oauth/kakao',
-      headers: {'content-type': 'application/json'},
-      body: json.encode({'token': accessToken}),
-    );
-  }
-
-  Future<dynamic> postOauthGoogle({accessToken}) async {
-    return await client.post(
-      MainApi.baseUrl + '/oauth/google',
-      headers: {'content-type': 'application/json'},
-      body: json.encode({'token': accessToken}),
+  Future<dynamic> getAllUserRoutines() async {
+    // 모든 user routines 목록을 조회합니다.
+    return await client.get(
+      MainApi.baseUrl + '/users/routines',
+      headers: {'content-type': 'application/json'}
     );
   }
 }
