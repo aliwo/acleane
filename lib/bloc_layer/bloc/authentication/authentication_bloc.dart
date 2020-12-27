@@ -28,29 +28,6 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is AppStarted) {
-      yield await event.process(authRepository);
-    }
-    if (event is CheckSignUp) {
-      // TODO;
-      if (event.user.id == 1) {
-      // if (false) {
-        //// 회원가입이 필요없다면
-        yield AuthenticationAuthenticated();
-      } else {
-        //// 회원가입이 필요하다면
-        yield AuthenticationUnsignedUp();
-      }
-    }
-    if (event is SignedIn) {
-      // 로컬에 토큰 저장 및 앱 스테이트에 보관
-      await authRepository.storeToken(token: event.token);
-      yield AuthenticationHasToken();
-    }
-    if (event is SignedOut) {
-      // 로컬에 토큰 삭제 및 앱 스테이트에서 삭제
-      await authRepository.SignOut();
-      yield AuthenticationUninitialized();
-    }
+    yield await event.process(authRepository);
   }
 }
