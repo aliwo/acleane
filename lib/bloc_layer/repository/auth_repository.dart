@@ -19,14 +19,14 @@ class AuthRepository {
   Future<dynamic> googleSignIn() async {
     // firebase google signin
     final googleSignIn = GoogleSignIn(
+      clientId: '669048621998-udqatc2g8e5tdbrdqjlrlpadqam1f38g.apps.googleusercontent.com',
       scopes: ['openid', 'https://www.googleapis.com/auth/userinfo.profile'],
       signInOption: SignInOption.standard,
     );
     try {
       final googleUser = await googleSignIn.signIn();
       final auth = await googleUser.authentication;
-      final response =
-          await authProvider.postOauthGoogle(accessToken: auth.accessToken);
+      final response = await authProvider.postOauthGoogle(accessToken: auth.accessToken);
       final body = json.decode(response.body);
       if (response.statusCode != 200) {
         throw Exception('No OAuth { body: ${body} }');

@@ -12,9 +12,8 @@ void main() {
   print('repository instantiated');
 
   // blocs
-  final authenticationBloc = AuthenticationBloc(
-    authRepository: authRepository,
-  );
+  final authenticationBloc =
+      AuthenticationBloc(authRepository: authRepository, userRepository: userRepository);
 
   runApp(
     MultiBlocProvider(
