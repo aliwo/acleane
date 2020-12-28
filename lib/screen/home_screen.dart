@@ -19,6 +19,9 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+// StatefulWidget 은 최대한 적게 사용하는 게 맞다고 했는데... 이런 구조를 가져가도 되는가
+// _events 를 처음에 어떻게 load 하는가... BlocProvider 를 어디다가 써...?
+
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Map<DateTime, List> _events;
   List _selectedEvents;
