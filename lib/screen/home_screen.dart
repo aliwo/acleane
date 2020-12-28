@@ -1,22 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
-
-// Example holidays
-final Map<DateTime, List> _holidays = {
-  DateTime(2020, 1, 1): ['New Year\'s Day'],
-  DateTime(2020, 1, 6): ['Epiphany'],
-  DateTime(2020, 2, 14): ['Valentine\'s Day'],
-  DateTime(2020, 4, 21): ['Easter Sunday'],
-  DateTime(2020, 4, 22): ['Easter Monday'],
-};
 
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MyHomePage(title: 'Table Calendar Demo');
+    return MyHomePage(title: '곰보일기');
   }
 }
 
@@ -38,7 +28,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    final _selectedDay = DateTime.now();
+    var now = DateTime.now();
+    final _selectedDay = DateTime(now.year, now.month, now.day);
 
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
@@ -116,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     print('CALLBACK: _onDaySelected');
     setState(() {
       _selectedEvents = events;
+      // _events = _events..remove(DateTime(day.year, day.month, day.day)); // 동적으로 remove 가 된다는 것 확인함.
     });
   }
 
@@ -138,12 +130,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
           _buildTableCalendar(),
           // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-          _buildButtons(),
           const SizedBox(height: 8.0),
           Expanded(child: _buildEventList()),
         ],
@@ -156,7 +144,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return TableCalendar(
       calendarController: _calendarController,
       events: _events,
-      holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.deepOrange[400],
@@ -184,7 +171,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       locale: 'pl_PL',
       calendarController: _calendarController,
       events: _events,
-      holidays: _holidays,
       initialCalendarFormat: CalendarFormat.month,
       formatAnimation: FormatAnimation.slide,
       startingDayOfWeek: StartingDayOfWeek.sunday,
@@ -303,56 +289,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildButtons() {
-    final dateTime = _events.keys.elementAt(_events.length - 2);
-
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Month'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.month);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('2 weeks'),
-              onPressed: () {
-                setState(() {
-                  _calendarController
-                      .setCalendarFormat(CalendarFormat.twoWeeks);
-                });
-              },
-            ),
-            RaisedButton(
-              child: Text('Week'),
-              onPressed: () {
-                setState(() {
-                  _calendarController.setCalendarFormat(CalendarFormat.week);
-                });
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8.0),
-        RaisedButton(
-          child: Text(
-              'Set day ${dateTime.day}-${dateTime.month}-${dateTime.year}'),
-          onPressed: () {
-            _calendarController.setSelectedDay(
-              DateTime(dateTime.year, dateTime.month, dateTime.day),
-              runCallback: true,
-            );
-          },
-        ),
-      ],
-    );
-  }
 
   Widget _buildEventList() {
     return ListView(
