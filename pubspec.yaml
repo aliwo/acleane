@@ -39,6 +39,8 @@ dependencies:
     adobe_xd: ^1.0.0+1
     #svg
     flutter_svg: ^0.18.1
+    # Table Calendar
+    table_calendar: ^2.3.3
 
 dev_dependencies:
     flutter_test:
