@@ -48,7 +48,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
         : <DateTime, List>{};
     return TableCalendar(
       calendarController: _calendarController,
-      events: <DateTime, List>{},
+      events: events,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.deepOrange[400],
