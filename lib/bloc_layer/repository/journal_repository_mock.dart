@@ -6,10 +6,7 @@ import 'package:acleane/bloc_layer/provider/journal_provider.dart';
 import 'journal_repository.dart';
 
 class JournalRepositoryMock extends JournalRepository {
-
-  @override
   Future<dynamic> getAllJournalsInMonth(date) async {
-
     var now = DateTime.now();
     final _selectedDay = DateTime(now.year, now.month, now.day);
 
@@ -46,7 +43,7 @@ class JournalRepositoryMock extends JournalRepository {
         'Event D8'
       ],
       _selectedDay.add(Duration(days: 3)):
-      Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
+          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
       _selectedDay.add(Duration(days: 7)): [
         'Event A10',
         'Event B10',
@@ -67,5 +64,4 @@ class JournalRepositoryMock extends JournalRepository {
       ],
     };
   }
-
 }
