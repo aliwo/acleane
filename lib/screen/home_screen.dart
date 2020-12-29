@@ -1,7 +1,8 @@
+import 'package:acleane/bloc_layer/repository/journal_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         'Event D8'
       ],
       _selectedDay.add(Duration(days: 3)):
-      Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
+          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
       _selectedDay.add(Duration(days: 7)): [
         'Event A10',
         'Event B10',
@@ -110,7 +111,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     print('CALLBACK: _onDaySelected');
     setState(() {
       _selectedEvents = events;
-      // _events = _events..remove(DateTime(day.year, day.month, day.day)); // 동적으로 remove 가 된다는 것 확인함.
+      _events = _events
+        ..remove(
+            DateTime(day.year, day.month, day.day)); // 동적으로 remove 가 된다는 것 확인함.
     });
   }
 
@@ -136,6 +139,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           _buildTableCalendar(),
           // _buildTableCalendarWithBuilders(),
           const SizedBox(height: 8.0),
+          FutureBuilder(
+            future: RepositoryProvider.of<JournalRepository>(context)
+                .getAllJournalsInMonth(null),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return snapshot.data;
+              }
+              return CircularProgressIndicator();
+            },
+          ),
           Expanded(child: _buildEventList()),
         ],
       ),
@@ -156,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
-        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
           color: Colors.deepOrange[400],
           borderRadius: BorderRadius.circular(16.0),
@@ -267,8 +280,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         color: _calendarController.isSelected(date)
             ? Colors.brown[500]
             : _calendarController.isToday(date)
-            ? Colors.brown[300]
-            : Colors.blue[400],
+                ? Colors.brown[300]
+                : Colors.blue[400],
       ),
       width: 16.0,
       height: 16.0,
@@ -292,22 +305,21 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-
   Widget _buildEventList() {
     return ListView(
       children: _selectedEvents
           .map((event) => Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 0.8),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        margin:
-        const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-        child: ListTile(
-          title: Text(event.toString()),
-          onTap: () => print('$event tapped!'),
-        ),
-      ))
+                decoration: BoxDecoration(
+                  border: Border.all(width: 0.8),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                child: ListTile(
+                  title: Text(event.toString()),
+                  onTap: () => print('$event tapped!'),
+                ),
+              ))
           .toList(),
     );
   }

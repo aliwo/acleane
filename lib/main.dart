@@ -1,4 +1,5 @@
 import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
+import 'package:acleane/bloc_layer/model/routine.dart';
 import 'package:acleane/bloc_layer/repository/routine_repository.dart';
 import 'bloc_layer/bloc/journal/journal_bloc.dart';
 import 'bloc_layer/bloc/routine/routine_bloc.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_layer/repository/journal_repository.dart';
 import 'bloc_layer/repository/user_repository_mock.dart';
 
-
 void main() {
   // bloc repositories
   final authRepository = AuthRepositoryMock();
@@ -22,27 +22,35 @@ void main() {
   print('repository instantiated');
 
   // blocs
-  final authenticationBloc =
-      AuthenticationBloc(authRepository: authRepository, userRepository: userRepository);
+  final authenticationBloc = AuthenticationBloc(
+      authRepository: authRepository, userRepository: userRepository);
   final journalBloc = JournalBloc(journalRepository: journalRepository);
   final routineBloc = RoutineBloc(routineRepository: routineRepository);
 
-
-
   runApp(
-    MultiBlocProvider(
+    MultiRepositoryProvider(
       providers: [
-        BlocProvider<AuthenticationBloc>(
-          create: (context) => authenticationBloc,
+        RepositoryProvider<JournalRepository>(
+          create: (context) => journalRepository,
         ),
-        BlocProvider<JournalBloc>(
-          create: (context) => journalBloc,
-        ),
-        BlocProvider<RoutineBloc>(
-          create: (context) => routineBloc,
+        RepositoryProvider<RoutineRepository>(
+          create: (context) => routineRepository,
         ),
       ],
-      child: MyApp(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthenticationBloc>(
+            create: (context) => authenticationBloc,
+          ),
+          BlocProvider<JournalBloc>(
+            create: (context) => journalBloc,
+          ),
+          BlocProvider<RoutineBloc>(
+            create: (context) => routineBloc,
+          ),
+        ],
+        child: MyApp(),
+      ),
     ),
   );
 }
