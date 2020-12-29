@@ -15,7 +15,7 @@ void main() {
   // bloc repositories
   final authRepository = AuthRepositoryMock();
   final userRepository = UserRepositoryMock();
-  final journalRepository = JournalRepository();
+  final journalRepository = JournalRepositoryMock();
   final routineRepository = RoutineRepository();
 
   print('repository instantiated');

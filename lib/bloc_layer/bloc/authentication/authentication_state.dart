@@ -37,7 +37,8 @@ class AuthenticationAuthenticated extends AuthenticationState {
   @override
   void onRoute(context) async {
     await Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
+        MaterialPageRoute(builder: (context) =>
+            HomeScreen()), (route) => false);
   }
 }
 

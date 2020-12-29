@@ -30,7 +30,7 @@ class CustomCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final journalApiState = BlocProvider.of<JournalApiBloc>(context).state;
-    final events = journalApiState is ApiSuccess ? journalApiState.data : [];
+    final events = journalApiState is ApiSuccess ? journalApiState.data : <DateTime, List>{};
     return TableCalendar(
       calendarController: _calendarController,
       events: events,
