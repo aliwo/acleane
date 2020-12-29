@@ -1,7 +1,4 @@
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
-import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
-import 'package:acleane/bloc_layer/bloc/journal/journal_bloc.dart';
-import 'package:acleane/bloc_layer/repository/journal_repository.dart';
 import 'package:acleane/screen/home_screen/components/custom_calendar.dart';
 import 'package:acleane/screen/home_screen/components/event_list.dart';
 import 'package:flutter/material.dart';
