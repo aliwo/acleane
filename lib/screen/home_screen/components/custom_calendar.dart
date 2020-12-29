@@ -3,8 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CustomCalendar extends StatelessWidget {
-  final CalendarController _calendarController = CalendarController();
+class CustomCalendar extends StatefulWidget {
+  CustomCalendar({Key key}) : super(key: key);
+
+  @override
+  _CustomCalendarState createState() => _CustomCalendarState();
+}
+
+class _CustomCalendarState extends State<CustomCalendar> {
+  CalendarController _calendarController;
+
+  @override
+  void initState() {
+    super.initState();
+    _calendarController = CalendarController();
+  }
 
   void _onDaySelected(DateTime day, List events, List holidays) {
     print('CALLBACK: _onDaySelected');
@@ -30,10 +43,12 @@ class CustomCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final journalApiState = BlocProvider.of<JournalApiBloc>(context).state;
-    final events = journalApiState is ApiSuccess ? journalApiState.data : <DateTime, List>{};
+    final events = journalApiState is ApiSuccess
+        ? journalApiState.data
+        : <DateTime, List>{};
     return TableCalendar(
       calendarController: _calendarController,
-      events: events,
+      events: <DateTime, List>{},
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
         selectedColor: Colors.deepOrange[400],

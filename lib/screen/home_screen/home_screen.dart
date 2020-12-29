@@ -27,9 +27,9 @@ class HomeScreen extends StatelessWidget {
               state is ApiSuccess
                   ? Expanded(
                       child: EventList(
-                        selectedEvents:
-                          calendarState is CalendarSuccess
-                            ? state.data[calendarState.date] : [],
+                        selectedEvents: calendarState is CalendarSuccess
+                            ? state.data[calendarState.date]
+                            : [],
                       ),
                     )
                   : CircularProgressIndicator(),
