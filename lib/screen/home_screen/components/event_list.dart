@@ -1,11 +1,12 @@
 import 'dart:collection';
 
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
+import 'package:acleane/bloc_layer/model/journal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EventList extends StatelessWidget {
-  final LinkedHashMap<DateTime, List<String>> journalList;
+  final LinkedHashMap<DateTime, List<Journal>> journalList; // 선택된 달의 모든 journal
 
   const EventList({Key key, this.journalList}) : super(key: key);
 
@@ -18,7 +19,7 @@ class EventList extends StatelessWidget {
           return ListView.builder(
             itemCount: journalList[state.date]?.length ?? 0,
             itemBuilder: (context, index) {
-              return _EventElement(text: journalList[state.date][index]);
+              return _EventElement(journal: journalList[state.date][index]);
             },
           );
         }
@@ -27,9 +28,17 @@ class EventList extends StatelessWidget {
     );
   }
 
-  Widget _EventElement({String text}) {
+  Widget _EventElement({Journal journal}) {
     return Container(
-      child: Text(text),
+      child: CheckboxListTile(
+        title: Text(journal.routineName),
+        secondary: Text('종류'),
+        controlAffinity: ListTileControlAffinity.trailing,
+        value: false,
+        onChanged: (bool value) {
+          print('checkbox Changed');
+        },
+      ),
     );
   }
 }

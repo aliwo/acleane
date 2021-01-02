@@ -13,55 +13,37 @@ class JournalRepositoryMock extends JournalRepository {
 
     return {
       _selectedDay.subtract(Duration(days: 30)): [
-        'Event A0',
-        'Event B0',
-        'Event C0'
+        Journal(id: 1, userId: 1, routineId: 1, routineName: '로아큐탄', date: _selectedDay.subtract(Duration(days: 30))),
+        Journal(id: 1, userId: 1, routineId: 2, routineName: '비타민D', date: _selectedDay.subtract(Duration(days: 30))),
+        Journal(id: 1, userId: 1, routineId: 3, routineName: '미노사이클린', date: _selectedDay.subtract(Duration(days: 30))),
       ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1'],
-      _selectedDay.subtract(Duration(days: 20)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
-      ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
       _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
+        Journal(id: 1, userId: 1, routineId: 1, routineName: '로아큐탄', date: _selectedDay.subtract(Duration(days: 27))),
       ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
+      _selectedDay.subtract(Duration(days: 3)): [
+        Journal(id: 1, userId: 1, routineId: 1, routineName: '로아큐탄', date: _selectedDay.subtract(Duration(days: 20))),
+        Journal(id: 1, userId: 1, routineId: 2, routineName: '비타민 D', date: _selectedDay.subtract(Duration(days: 20))),
+        Journal(id: 1, userId: 1, routineId: 3, routineName: '미노사이클린', date: _selectedDay.subtract(Duration(days: 20))),
+        Journal(id: 1, userId: 1, routineId: 4, routineName: '디페린', date: _selectedDay.subtract(Duration(days: 20))),
       ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
+      _selectedDay.subtract(Duration(days: 2)): [
+        Journal(id: 1, userId: 1, routineId: 1, routineName: '로아큐탄', date: _selectedDay.subtract(Duration(days: 16))),
+        Journal(id: 1, userId: 1, routineId: 2, routineName: '비타민 D', date: _selectedDay.subtract(Duration(days: 16))),
       ],
-      _selectedDay.add(Duration(days: 3)): ['Event A9', 'Event A9', 'Event B9'],
-      _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
+      _selectedDay.add(Duration(days: 10)): [
+        Journal(id: 1, userId: 1, routineId: 3, routineName: '미노사이클린', date: _selectedDay.subtract(Duration(days: 10))),
+        Journal(id: 1, userId: 1, routineId: 4, routineName: '디페린', date: _selectedDay.subtract(Duration(days: 10))),
+        Journal(id: 1, userId: 1, routineId: 2, routineName: '비타민 D', date: _selectedDay.subtract(Duration(days: 10))),
       ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
-      _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12'
+      _selectedDay.add(Duration(days: 4)): [
+        Journal(id: 1, userId: 1, routineId: 3, routineName: '미노사이클린', date: _selectedDay.subtract(Duration(days: 4))),
+        Journal(id: 1, userId: 1, routineId: 4, routineName: '디페린', date: _selectedDay.subtract(Duration(days: 4))),
+        Journal(id: 1, userId: 1, routineId: 2, routineName: '비타민 D', date: _selectedDay.subtract(Duration(days: 4))),
       ],
-      _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
-      _selectedDay.add(Duration(days: 26)): [
-        'Event A14',
-        'Event B14',
-        'Event C14'
-      ],
+      _selectedDay.add(Duration(days: 2)): [
+        Journal(id: 1, userId: 1, routineId: 3, routineName: '미노사이클린', date: _selectedDay.subtract(Duration(days: 2))),
+        Journal(id: 1, userId: 1, routineId: 4, routineName: '디페린', date: _selectedDay.subtract(Duration(days: 2))),
+      ]
     };
   }
 }
