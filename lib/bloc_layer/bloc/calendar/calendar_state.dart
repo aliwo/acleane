@@ -12,7 +12,7 @@ class CalendarInitial extends CalendarState {}
 class CalendarPending extends CalendarState {}
 
 class CalendarSuccess extends CalendarState {
-  final DateTime date;
+  final DateTime date; // 달력에서 현재 선택된 날짜
 
   CalendarSuccess({this.date});
 
