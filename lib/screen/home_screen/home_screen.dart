@@ -25,15 +25,11 @@ class HomeScreen extends StatelessWidget {
             children: [
               CustomCalendar(),
               SizedBox(height: 8.0),
-              state is ApiSuccess
-                  ? Expanded(
-                      child: EventList(
-                        journalList: calendarState is CalendarSuccess
-                            ? state.data[calendarState.date]
-                            : [],
-                      ),
-                    )
-                  : CircularProgressIndicator(),
+              Expanded(
+                child: state is ApiSuccess
+                    ? EventList(journalList: state.data)
+                    : CircularProgressIndicator(),
+              ),
             ],
           );
         },

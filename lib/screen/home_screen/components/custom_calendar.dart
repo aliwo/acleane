@@ -23,7 +23,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   void _onDaySelected(DateTime day, List events, List holidays) {
     print('CALLBACK: _onDaySelected');
     BlocProvider.of<CalendarBloc>(context).add(CalendarOnDaySelected(
-      day: day,
+      day: DateTime(day.year, day.month, day.day),
       events: events,
       holidays: holidays,
     ));
@@ -37,6 +37,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
   void _onCalendarCreated(
       DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
+    final day = DateTime.now();
+    BlocProvider.of<CalendarBloc>(context).add(CalendarOnDaySelected(
+      day: DateTime(day.year, day.month, day.day),
+      events: null,
+      holidays: null,
+    ));
   }
 
   @override
