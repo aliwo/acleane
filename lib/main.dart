@@ -1,5 +1,6 @@
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/bloc_delegate.dart';
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
 import 'package:acleane/bloc_layer/repository/journal_repository_mock.dart';
 import 'package:acleane/bloc_layer/repository/routine_repository.dart';
@@ -12,6 +13,7 @@ import 'bloc_layer/repository/journal_repository.dart';
 import 'bloc_layer/repository/user_repository_mock.dart';
 
 void main() {
+  BlocSupervisor.delegate = SimpleBlocDelegate();
   // bloc repositories
   final authRepository = AuthRepositoryMock();
   final userRepository = UserRepositoryMock();

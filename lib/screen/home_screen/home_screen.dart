@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     BlocProvider.of<JournalApiBloc>(context).add(ApiLoad());
     final calendarState = BlocProvider.of<CalendarBloc>(context).state;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -23,11 +24,11 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               CustomCalendar(),
-              const SizedBox(height: 8.0),
+              SizedBox(height: 8.0),
               state is ApiSuccess
                   ? Expanded(
                       child: EventList(
-                        selectedEvents: calendarState is CalendarSuccess
+                        journalList: calendarState is CalendarSuccess
                             ? state.data[calendarState.date]
                             : [],
                       ),

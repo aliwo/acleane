@@ -1,4 +1,5 @@
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -21,13 +22,11 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
   void _onDaySelected(DateTime day, List events, List holidays) {
     print('CALLBACK: _onDaySelected');
-    /*
-    setState(() {
-      _events = _events
-        ..remove(
-            DateTime(day.year, day.month, day.day)); // 동적으로 remove 가 된다는 것 확인함.
-    });
-    */
+    BlocProvider.of<CalendarBloc>(context).add(CalendarOnDaySelected(
+      day: day,
+      events: events,
+      holidays: holidays,
+    ));
   }
 
   void _onVisibleDaysChanged(
