@@ -25,8 +25,8 @@ void main() {
   // blocs
   final authenticationBloc = AuthenticationBloc(
       authRepository: authRepository, userRepository: userRepository);
-  final calendarBlock = CalendarBloc();
-  final journalBlock = ApiBloc(
+  final calendarBloc = CalendarBloc();
+  final journalBloc = ApiBloc(
     name: 'journal',
     api: () => journalRepository.getAllJournalsInMonth(null),
   );
@@ -47,10 +47,10 @@ void main() {
             create: (context) => authenticationBloc,
           ),
           BlocProvider<CalendarBloc>(
-            create: (context) => calendarBlock,
+            create: (context) => calendarBloc,
           ),
           BlocProvider<JournalApiBloc>(
-            create: (context) => journalBlock,
+            create: (context) => journalBloc,
           ),
         ],
         child: MyApp(),
