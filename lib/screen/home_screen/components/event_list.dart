@@ -34,8 +34,9 @@ class EventList extends StatelessWidget {
         title: Text(journal.routineName),
         secondary: Text('종류'),
         controlAffinity: ListTileControlAffinity.trailing,
-        value: false,
+        value: true,
         onChanged: (bool value) {
+          // journal 을 베이스로 만들어진 CheckboxListTile 은 무조건 true
           print('checkbox Changed');
         },
       ),
