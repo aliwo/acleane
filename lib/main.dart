@@ -28,7 +28,9 @@ void main() {
   final calendarBloc = CalendarBloc();
   final journalBloc = ApiBloc(
     name: 'journal',
-    api: () => journalRepository.getAllJournalsInMonth(null),
+    api: () async => await journalRepository.getAllJournalsInMonth(null),
+    // TODO: async await 이 없어서 붙임. 이게 맞는지 화인할 것.
+    // 아마 async await 없이도 돌아갔던 이유는 mock 함수가 실제 async 로직을 쓰지 않기 때문인가?
   );
 
   runApp(
