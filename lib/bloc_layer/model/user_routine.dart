@@ -10,13 +10,15 @@ part 'user_routine.g.dart';
 class UserRoutine {
   int id;
   int routineId;
+  String routineName;
   String amount;
 
-  UserRoutine({this.id, this.routineId, this.amount});
+  UserRoutine({this.id, this.routineId, this.routineName, this.amount});
 
   UserRoutine.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     routineId = json['routine_id'];
+    routineName = json['routine_name'];
     amount = json['amount'];
   }
 
@@ -24,6 +26,7 @@ class UserRoutine {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['routine_id'] = this.routineId;
+    data['routine_name'] = this.routineName;
     data['amount'] = this.amount;
     return data;
   }

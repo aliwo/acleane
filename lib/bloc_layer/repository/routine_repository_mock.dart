@@ -7,7 +7,7 @@ import 'package:acleane/bloc_layer/provider/user_provider.dart';
 import 'package:acleane/bloc_layer/repository/routine_repository.dart';
 
 class RoutineRepositoryMock extends RoutineRepository {
-  
+
   @override
   Future<dynamic> getAllRoutines() async {
     return [
@@ -19,8 +19,8 @@ class RoutineRepositoryMock extends RoutineRepository {
   @override
   Future<dynamic> getAllUserRoutines() async {
     return [
-      UserRoutine(id: 1, routineId: 1, amount: '1 알'),
-      UserRoutine(id: 2, routineId: 2, amount: '2 알')
+      UserRoutine(id: 1, routineId: 1, routineName: '로아큐탄', amount: '1 알'),
+      UserRoutine(id: 2, routineId: 2, routineName: '미노사이클린', amount: '2 알')
     ];
   }
 }

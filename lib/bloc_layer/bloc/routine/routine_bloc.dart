@@ -1,19 +1,8 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 
-part 'routine_event.dart';
-part 'routine_state.dart';
 
-class RoutineBloc extends Bloc<RoutineEvent, RoutineState> {
-  @override
-  RoutineState get initialState => RoutineInitial();
+class RoutineBloc extends ApiBloc {
 
-  @override
-  Stream<RoutineState> mapEventToState(
-    RoutineEvent event,
-  ) async* {
-
-  }
 }
