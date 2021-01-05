@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/journal/journal_bloc.dart';
-import 'package:acleane/bloc_layer/bloc/routine/routine_bloc.dart';
 import 'package:acleane/bloc_layer/model/journal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,6 +52,7 @@ class EventList extends StatelessWidget {
   Widget _EventElement({String title, bool value}) {
     return Container(
       child: CheckboxListTile(
+        activeColor: Colors.deepOrange[400],
         title: Text(title),
         controlAffinity: ListTileControlAffinity.trailing,
         value: value,

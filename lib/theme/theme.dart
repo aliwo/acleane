@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class palette {
-  static Color highlight1 = Color(0xff6977E4);
+class Palette {
 }
 
 final coreTheme = ThemeData(
+  primaryColor: Colors.deepOrange[400],
   textTheme: TextTheme(
     headline1: TextStyle(
       color: Colors.black,
