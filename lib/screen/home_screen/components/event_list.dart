@@ -50,6 +50,7 @@ class EventList extends StatelessWidget {
   }
 
   Widget _EventElement({String title, bool value}) {
+    // unchangable 속성 추가할 것. 이 함수를 factory 로 만들어야 할 듯
     return Container(
       child: CheckboxListTile(
         activeColor: Colors.deepOrange[400],
@@ -57,7 +58,8 @@ class EventList extends StatelessWidget {
         controlAffinity: ListTileControlAffinity.trailing,
         value: value,
         onChanged: (bool value) {
-          // journal 을 베이스로 만들어진 CheckboxListTile 은 무조건 true
+          // TODO: 체크 해제했을 때 journal 이 사라지도록.
+          // 단, unchangable 이 true 라면 체크해제 할 수 없는 CheckboxListTile 이 생기도록 해야 겠네
           print('checkbox Changed');
         },
       ),
