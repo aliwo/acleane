@@ -20,30 +20,34 @@ class EventList extends StatelessWidget {
       builder: (context, state) {
         if (state is CalendarSuccess && journalState is JournalSuccess) {
 
-          // 먼저 각 userRoutine 별로 EventElement 를 형성
-          var events = {};
-          for (var userRoutine in journalState.userRoutines) {
-            events[userRoutine.routineId] = {'title': userRoutine.routineName, 'value': false};
-          }
-
-          // journals 를 회전하면서 routine_id 가 같은 userRoutine 이 있다면 value 를 true 로 set
-          // 없다면 events 에 추가
-          var lefted = [];
-          for (var journal in journalList[state.date] ?? []) {
-            if (events.containsKey(journal.routineId)) {
-              events[journal.routineId]['value'] = true;
-            } else {
-              events[journal.routineId] = {'title': journal.routineName, 'value': true};
-            }
-          }
-
           return ListView(
-            children: events.values.map((x) => _EventElement(title: x['title'], value: x['value'])).toList(),
+            children: _BuildEvents(journalState.userRoutines, journalList[state.date])
+                .values.map((x) => _EventElement(title: x['title'], value: x['value'])).toList(),
           );
         }
         return Container();
       },
     );
+  }
+
+  Map _BuildEvents(userRoutines, journals) {
+    var events = {};
+
+    // 먼저 각 userRoutine 별로 EventElement 를 형성
+    for (var userRoutine in userRoutines) {
+      events[userRoutine.routineId] = {'title': userRoutine.routineName, 'value': false};
+    }
+
+    // journals 를 회전하면서 routine_id 가 같은 userRoutine 이 있다면 value 를 true 로 set
+    // 없다면 events 에 추가
+    for (var journal in journals ?? []) {
+      if (events.containsKey(journal.routineId)) {
+        events[journal.routineId]['value'] = true;
+      } else {
+        events[journal.routineId] = {'title': journal.routineName, 'value': true};
+      }
+    }
+    return events;
   }
 
   Widget _EventElement({String title, bool value}) {
