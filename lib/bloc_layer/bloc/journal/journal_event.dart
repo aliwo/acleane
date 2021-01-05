@@ -7,3 +7,14 @@ abstract class JournalEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class UserRoutineLoaded extends JournalEvent {
+  final List userRoutines;
+  UserRoutineLoaded(this.userRoutines);
+}
+
+class JournalLoaded extends JournalEvent {
+  final List userRoutines;
+  final List journals;
+  JournalLoaded(this.userRoutines, this.journals);
+}
+
