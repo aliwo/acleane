@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
+import 'package:acleane/bloc_layer/model/journal.dart';
 import 'package:acleane/bloc_layer/repository/journal_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -29,14 +30,10 @@ class JournalBloc extends Bloc<JournalEvent, JournalState> {
 
   @override
   Stream<JournalState> mapEventToState(JournalEvent event) async* {
-
-  }
-
-  Stream<JournalLoaded> mapUserRoutineLoadedEventToState(
-      UserRoutineLoaded event,
-      ) async* {
-    List journals = await journalRepository.getAllJournalsInMonth(null);
-    yield JournalLoaded(event.userRoutines, journals);
+    if (event is UserRoutineLoaded) {
+      var journals = await journalRepository.getAllJournalsInMonth(null);
+      yield JournalSuccess(event.userRoutines, journals);
+    }
   }
 
 }

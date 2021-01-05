@@ -1,4 +1,6 @@
+import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/routine/routine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) async {
+        BlocProvider.of<RoutineBloc>(context).add(ApiLoad()); // user routine 을 가져옵니다.
         await Future.delayed(Duration(seconds: 2));
         await state.onRoute(context);
       },

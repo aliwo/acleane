@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/journal/journal_bloc.dart';
 import 'package:acleane/bloc_layer/model/journal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,7 @@ class EventList extends StatelessWidget {
           return ListView.builder(
             itemCount: journalList[state.date]?.length ?? 0,
             itemBuilder: (context, index) {
+              print(BlocProvider.of<JournalBloc>(context).state);
               return _EventElement(journal: journalList[state.date][index]);
             },
           );

@@ -1,5 +1,6 @@
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/journal/journal_bloc.dart';
 import 'package:acleane/screen/home_screen/components/custom_calendar.dart';
 import 'package:acleane/screen/home_screen/components/event_list.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +11,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<JournalApiBloc>(context).add(ApiLoad());
-    final calendarState = BlocProvider.of<CalendarBloc>(context).state;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
       body: BlocBuilder(
-        bloc: BlocProvider.of<JournalApiBloc>(context),
+        bloc: BlocProvider.of<JournalBloc>(context),
         builder: (context, state) {
           return Column(
             mainAxisSize: MainAxisSize.max,
@@ -26,8 +25,8 @@ class HomeScreen extends StatelessWidget {
               CustomCalendar(),
               SizedBox(height: 8.0),
               Expanded(
-                child: state is ApiSuccess
-                    ? EventList(journalList: state.data)
+                child: state is JournalSuccess
+                    ? EventList(journalList: state.journals)
                     : CircularProgressIndicator(),
               ),
             ],

@@ -12,9 +12,5 @@ class UserRoutineLoaded extends JournalEvent {
   UserRoutineLoaded(this.userRoutines);
 }
 
-class JournalLoaded extends JournalEvent {
-  final List userRoutines;
-  final List journals;
-  JournalLoaded(this.userRoutines, this.journals);
-}
+
 

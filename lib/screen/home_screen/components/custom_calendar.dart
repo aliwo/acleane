@@ -1,5 +1,6 @@
 import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/calendar/calendar_bloc.dart';
+import 'package:acleane/bloc_layer/bloc/journal/journal_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -47,9 +48,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    final journalApiState = BlocProvider.of<JournalApiBloc>(context).state;
-    final events = journalApiState is ApiSuccess
-        ? journalApiState.data
+    final journalState = BlocProvider.of<JournalBloc>(context).state;
+    final events = journalState is JournalSuccess
+        ? journalState.journals
         : <DateTime, List>{};
     return TableCalendar(
       calendarController: _calendarController,

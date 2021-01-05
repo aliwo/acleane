@@ -11,7 +11,11 @@ abstract class JournalState extends Equatable {
 class JournalInitial extends JournalState {}
 
 
-
+class JournalSuccess extends JournalState {
+  final List userRoutines;
+  final Map<DateTime, List<Journal>> journals;
+  JournalSuccess(this.userRoutines, this.journals);
+}
 
 
 
