@@ -27,6 +27,7 @@ class EventList extends StatelessWidget {
           }
 
           // journals 를 회전하면서 routine_id 가 같은 userRoutine 이 있다면 value 를 true 로 set
+          // 없다면 events 에 추가
           var lefted = [];
           for (var journal in journalList[state.date] ?? []) {
             if (events.containsKey(journal.routineId)) {
