@@ -12,5 +12,14 @@ class UserRoutineLoaded extends JournalEvent {
   UserRoutineLoaded(this.userRoutines);
 }
 
+class JournalCreated extends JournalEvent {
+  final DateTime date;
+  final int routineId;
+  JournalCreated(this.date, this.routineId);
+}
 
+class JournalDeleted extends JournalEvent {
+  final Journal journal;
+  JournalDeleted(this.journal);
+}
 

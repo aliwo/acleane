@@ -31,8 +31,18 @@ class JournalBloc extends Bloc<JournalEvent, JournalState> {
   @override
   Stream<JournalState> mapEventToState(JournalEvent event) async* {
     if (event is UserRoutineLoaded) {
-      var journals = await journalRepository.getAllJournalsInMonth(null);
-      yield JournalSuccess(event.userRoutines, journals);
+      yield JournalSuccess(event.userRoutines, await journalRepository.getAllJournalsInMonth(null));
+    }
+    if (event is JournalCreated) {
+      var journal = await journalRepository.postJournal(event.routineId, event.date);
+      (state as JournalSuccess).journals[event.date].add(journal);
+      yield JournalSuccess((state as JournalSuccess).userRoutines
+          , (state as JournalSuccess).journals);
+    }
+    if (event is JournalDeleted) {
+      await journalRepository.deleteJournal(event.journal.id);
+      yield JournalSuccess((state as JournalSuccess).userRoutines
+          , await journalRepository.getAllJournalsInMonth(null));
     }
   }
 
