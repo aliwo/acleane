@@ -6,12 +6,19 @@ import 'check_tile.dart';
 
 CheckTile checkTileFactory(event) {
   if (event['type'] == CheckTile.TYPE_ROUTINE) {
-    return RoutineCheckTile(routine: event['routine'],
-        journal: event['journal'], checked: event['value']);
+    return RoutineCheckTile(
+        routine: event['routine'],
+        journal: event['journal'],
+        journalBloc: event['journalBloc'],
+        calendarBloc: event['calendarBloc'],
+        checked: event.containsKey('journal') && event['journal'] != null,
+    );
   } else if (event['type'] == CheckTile.TYPE_JOURNAL) {
-    return JournalCheckTile(journal: event['journal'], checked: event['value']);
+    return JournalCheckTile(
+        journal: event['journal'],
+        checked: event.containsKey('journal') && event['journal'] != null
+    );
   }
-  print('뭐야?');
 }
 
 

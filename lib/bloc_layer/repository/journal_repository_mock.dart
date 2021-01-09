@@ -46,4 +46,14 @@ class JournalRepositoryMock extends JournalRepository {
       ]
     };
   }
+
+  @override
+  Future<dynamic> deleteJournal(journalId) async {
+
+  }
+
+  @override
+  Future<dynamic> postJournal(routineId, date) async {
+    return Journal(date: DateTime.now(), routineId: 4, routineName: 'AHA', id: 999);
+  }
 }

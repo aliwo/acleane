@@ -19,8 +19,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     if (event is CalendarOnDaySelected) {
       yield CalendarSuccess(date: event.day);
     }
-    if (event is CalendarOnVisibleDaysChanged) {
-      // 달의 변경
+    if (event is CalendarJournalRefreshed) {
+      yield CalendarSuccess(date: event.day);
     }
   }
 }

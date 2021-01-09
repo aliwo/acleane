@@ -22,7 +22,7 @@ class EventList extends StatelessWidget {
       builder: (context, state) {
         if (state is CalendarSuccess && journalState is JournalSuccess) {
           return ListView(
-            children: _BuildEvents(journalState.userRoutines, journalList[state.date], () {})
+            children: _BuildEvents(journalState.userRoutines, journalList[state.date], context)
                 .values.map((x) => checkTileFactory(x).create(context)).toList(),
           );
         }
@@ -38,9 +38,10 @@ class EventList extends StatelessWidget {
     for (var userRoutine in userRoutines) {
       events[userRoutine.routineId] = {
         'title': userRoutine.routineName,
-        'value': false,
         'type': CheckTile.TYPE_ROUTINE,
-        'routine': userRoutine
+        'routine': userRoutine,
+        'journalBloc': BlocProvider.of<JournalBloc>(context),
+        'calendarBloc': BlocProvider.of<CalendarBloc>(context),
       };
     }
 
@@ -48,12 +49,10 @@ class EventList extends StatelessWidget {
     // 없다면 events 에 추가
     for (var journal in journals ?? []) {
       if (events.containsKey(journal.routineId)) {
-        events[journal.routineId]['value'] = true;
         events[journal.routineId]['journal'] = journal;
       } else {
         events[journal.routineId] = {
           'title': journal.routineName,
-          'value': true,
           'type': CheckTile.TYPE_JOURNAL,
           'journal': journal
         };

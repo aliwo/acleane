@@ -18,16 +18,26 @@ class CalendarOnDaySelected extends CalendarEvent {
   List<Object> get props => [];
 }
 
-class CalendarOnVisibleDaysChanged extends CalendarEvent {
-  final DateTime first;
-  final DateTime last;
-  final CalendarFormat format;
+// class CalendarOnVisibleDaysChanged extends CalendarEvent {
+//   final DateTime first;
+//   final DateTime last;
+//   final CalendarFormat format;
+//
+//   CalendarOnVisibleDaysChanged({
+//     this.first,
+//     this.last,
+//     this.format,
+//   });
+//
+//   @override
+//   List<Object> get props => [];
+// }
 
-  CalendarOnVisibleDaysChanged({
-    this.first,
-    this.last,
-    this.format,
-  });
+
+class CalendarJournalRefreshed extends CalendarEvent {
+  final DateTime day;
+
+  const CalendarJournalRefreshed(this.day);
 
   @override
   List<Object> get props => [];
