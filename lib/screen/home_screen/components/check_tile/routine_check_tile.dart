@@ -33,6 +33,7 @@ class RoutineCheckTile extends CheckTile {
       } else {
         journalBloc.add(JournalDeleted(journal));
       };
+      // 근데 journalBloc 보다 calendarBloc 이 먼저 업데이트 되면 버그나는 거임...
       calendarBloc.add(CalendarJournalRefreshed((calendarBloc.state as CalendarSuccess).date));
     };
   }
