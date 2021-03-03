@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "669048621998",
+    "firebase_url": "https://positive-rhino-297211.firebaseio.com",
+    "project_id": "positive-rhino-297211",
+    "storage_bucket": "positive-rhino-297211.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669048621998:android:944cb08df05be5d7fc563f",
+        "android_client_info": {
+          "package_name": "com.example.acleane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669048621998-udqatc2g8e5tdbrdqjlrlpadqam1f38g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.acleane",
+            "certificate_hash": "eccc06fc99d22eaed38f805374b0339f80e164ef"
+          }
+        },
+        {
+          "client_id": "669048621998-d21ev4fou10ateo5hg296nf85bed398v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZHX1xgTkO5ZJM9LmZ2Ur2IM-7Sj79pRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669048621998-d21ev4fou10ateo5hg296nf85bed398v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

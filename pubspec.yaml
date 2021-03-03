@@ -41,6 +41,8 @@ dependencies:
     flutter_svg: ^0.18.1
     #custom_radio_grouped_button
     custom_radio_grouped_button: ^1.0.6+1
+    #firebase_auth
+    firebase_auth: ^0.15.0+1
 
 dev_dependencies:
     flutter_test:
@@ -61,6 +63,7 @@ flutter:
     assets:
       - images/svg/logo.svg
       - images/svg/
+      - images/
     # An image asset can refer to one or more resolution-specific "variants", see
     # https://flutter.dev/assets-and-images/#resolution-aware.
 
