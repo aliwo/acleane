@@ -29,6 +29,9 @@ class HomeScreen extends StatelessWidget {
                     ? EventList(journalList: state.journals)
                     : CircularProgressIndicator(),
               ),
+              FloatingActionButton(
+                onPressed: () {},
+              ),
             ],
           );
         },
