@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:acleane/bloc_layer/bloc/sign_in/sign_in_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,8 +39,10 @@ class _SignInScreen extends StatelessWidget {
           ),
           BlocProvider(
               create: (BuildContext context) => SignInBloc(
-                    authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-                    authRepository: BlocProvider.of<AuthenticationBloc>(context).authRepository,
+                    authenticationBloc:
+                        BlocProvider.of<AuthenticationBloc>(context),
+                    authRepository: BlocProvider.of<AuthenticationBloc>(context)
+                        .authRepository,
                   ),
               child: GoogleLoginButton()),
           Spacer(
@@ -85,7 +86,8 @@ class GoogleLoginButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             primary: Colors.white,
             minimumSize: Size(235, 55),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25)))),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25)))),
         onPressed: () => signInBloc.add(GoogleSignInPressed()),
         label: Text(
           '구글 아이디로 시작하기',

@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class AuthProvider {
-  var client = Client();
+  final client = Client();
 
   Future<dynamic> postOauthNaver({accessToken}) async {
     return await client.post(

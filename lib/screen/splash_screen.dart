@@ -1,5 +1,6 @@
+import 'package:acleane/bloc_layer/bloc/api/api_bloc.dart';
 import 'package:acleane/bloc_layer/bloc/authentication/authentication_bloc.dart';
-import 'package:acleane/screen/sign_in_screen.dart';
+import 'package:acleane/bloc_layer/bloc/routine/routine_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) async {
+        BlocProvider.of<RoutineBloc>(context).add(ApiLoad()); // user routine 을 가져옵니다.
         await Future.delayed(Duration(seconds: 2));
         await state.onRoute(context);
       },
@@ -60,7 +62,8 @@ class Splash extends StatelessWidget {
                   ),
                   Text(
                     '여드름으로 고민하는 당신을 위해',
-                    style: TextStyle(fontSize: 14, fontFamily: 'NanumSquare_ac'),
+                    style:
+                        TextStyle(fontSize: 14, fontFamily: 'NanumSquare_ac'),
                   ),
                 ],
               ),
@@ -76,7 +79,8 @@ class Splash extends StatelessWidget {
                 'v1.0',
                 style: TextStyle(fontSize: 12, fontFamily: 'NanumSquare_ac'),
               ),
-              decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.black))),
+              decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.black))),
             ),
           ],
         ));

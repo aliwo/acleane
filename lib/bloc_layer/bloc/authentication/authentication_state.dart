@@ -24,7 +24,7 @@ class AuthenticationUninitialized extends AuthenticationState {
 class AuthenticationHasToken extends AuthenticationState {
   @override
   void onRoute(context) async {
-    User user = await UserRepository().getMyProfile();
+    User user = await BlocProvider.of<AuthenticationBloc>(context).userRepository.getMyProfile();
     BlocProvider.of<AuthenticationBloc>(context).add(CheckSignUp(user: user));
     // 라우팅
   }
@@ -32,11 +32,13 @@ class AuthenticationHasToken extends AuthenticationState {
 
 /// 스크린 : splash/signIn -> home
 /// 저장된 토큰 / 받아온 토큰이 회원가입이 되어있는 상태입니다.
-/// home으로 이동합니다.
+/// home 으로 이동합니다.
 class AuthenticationAuthenticated extends AuthenticationState {
   @override
   void onRoute(context) async {
-    // 라우팅
+    await Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) =>
+            HomeScreen()), (route) => false);
   }
 }
 
@@ -47,7 +49,7 @@ class AuthenticationUnauthenticated extends AuthenticationState {
   @override
   void onRoute(context) async {
     await Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => SignInScreen()), (route) => false); // 라우팅
+        MaterialPageRoute(builder: (context) => SignInScreen()), (route) => false);
   }
 }
 

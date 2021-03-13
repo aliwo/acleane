@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class palette {
-  static Color highlight1 = Color(0xff6977E4);
+class Palette {
 }
 
 class OKButton extends StatefulWidget {
@@ -52,6 +51,7 @@ class InstructionBalloon extends StatelessWidget {
 }
 
 final coreTheme = ThemeData(
+  primaryColor: Colors.deepOrange[400],
   textTheme: TextTheme(
     headline1: TextStyle(
       color: Colors.black,

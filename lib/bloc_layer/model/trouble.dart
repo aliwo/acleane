@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-part 'user.g.dart';
+part 'trouble.g.dart';
 
 // ignore_for_file: unnecessary_this
 // ignore_for_file: unnecessary_new
@@ -7,22 +7,21 @@ part 'user.g.dart';
 // ignore_for_file: omit_local_variable_types
 
 @JsonSerializable()
-class User {
+class Trouble {
   int id;
-  int age;
   String name;
-  String gender; // 이거 enum 같은거로 할 수 없나?
-  bool registered;
 
-  User({this.id, this.age, this.name, this.gender, this.registered});
+  Trouble({this.id, this.name});
 
-  User.fromJson(Map<String, dynamic> json) {
+  Trouble.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['name'] = this.name;
     return data;
   }
 }

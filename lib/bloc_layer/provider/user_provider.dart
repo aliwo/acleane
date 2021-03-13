@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class UserProvider {
-  var client = Client();
+  final client = Client();
 
   Future<dynamic> getMyProfile() async {
     return await client.get(
